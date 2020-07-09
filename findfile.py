@@ -19,7 +19,7 @@ class bcolors:
 #
 def panic():
     print ( bcolors.WARNING + "You're doing it wrong. File to search for is needed!" + bcolors.ENDC)
-    print ("usage: findfile <file> <search path>")
+    print ("usage: " + sys.argv[0] + " <file> <search path>")
     sys.exit(2)
 
 # Finds the program
@@ -46,9 +46,9 @@ else:
    FULLPATH = findfile(FILE,PATH)
 
    if FULLPATH == 'No file':
-      print('File (' + FILE + ') not found in path (' + PATH + ').')
+      print(bcolors.FAIL + 'File (' + FILE + ') not found in path (' + PATH + ').' + bcolors.ENDC)
       sys.exit(1)
 
-   print('PATH = ' + FULLPATH)
+   print('PATH = ' + bcolors.OKGREEN + FULLPATH + bcolors.ENDC)
    RELATIVEPATH = os.path.relpath(FULLPATH,PATH)
    print('Relative PATH = ' + RELATIVEPATH)
