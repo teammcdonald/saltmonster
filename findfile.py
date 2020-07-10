@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 #
-# Script to find a file
+# Script to find a file(s)
 #
-# Git managed at
+# Git managed at https://github.com/teammcdonald/saltmonster.git
 #
 
 import sys, os
@@ -22,18 +22,22 @@ def panic():
     print ("usage: " + sys.argv[0] + " <file> <search path>")
     sys.exit(2)
 
-# Finds the program
+# Finds the file(s)
 #
-def findfile(FILE,PATH):
-    FULLPATH = 'No file'
-    for root, dirs, files in os.walk(PATH):
-        if FILE in files:
-            FULLPATH = os.path.join(root, FILE)
-    return FULLPATH
+def findfiles(FILE,PATH):
+   FILES = []
+   FILESRELATIVE = []
+   for root, dirs, files in os.walk(PATH):
+      if FILE in files:
+         FILES.append(os.path.join(root, FILE))
+         FILESRELATIVE.append(os.path.join(os.path.relpath(root, PATH),FILE))
+   return FILES, FILESRELATIVE
 
 # MAIN
 #
 
+# Did we pass any arguments
+#
 if len(sys.argv) <= 1:
    panic()
 else:
@@ -43,12 +47,14 @@ else:
    except:
       PATH = '/'
 
-   FULLPATH = findfile(FILE,PATH)
+   # Find all the files
+   #
+   FILESFULL, FILESRELATIVE = findfiles(FILE,PATH)
 
-   if FULLPATH == 'No file':
+   if len(FILESFULL) > 0:
+      for i in FILESFULL:
+         print(i)
+      for i in FILESRELATIVE:
+         print(i)
+   else:
       print(bcolors.FAIL + 'File (' + FILE + ') not found in path (' + PATH + ').' + bcolors.ENDC)
-      sys.exit(1)
-
-   print('PATH = ' + bcolors.OKGREEN + FULLPATH + bcolors.ENDC)
-   RELATIVEPATH = os.path.relpath(FULLPATH,PATH)
-   print('Relative PATH = ' + RELATIVEPATH)
