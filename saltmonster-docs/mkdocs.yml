@@ -1,0 +1,4 @@
+site_name: SaltMonster Docs
+site_url: https://saltmonster.com/docs
+theme: 
+  name: material
