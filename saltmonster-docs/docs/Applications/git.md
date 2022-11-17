@@ -22,3 +22,35 @@ via ssh (Key must be in place)
 ```bash
 # git clone git@git/Documentation.git
 ```
+
+### Create a deploy key
+
+Generate a unique ssh key for git
+
+```bash
+# ssh-keygen -y ed25519
+```
+File name is id_ed25519_git
+
+Create a ssh config file to direct git requests to that key
+
+```bash
+# touch ~/.ssh/config
+# chmod 600 ~/.ssh/config
+```
+
+Add the following to the config file
+```bash
+Host github-repo
+	HostName github.com 
+    AddKeysToAgent yes 
+    PreferredAuthentications publickey 
+    IdentityFile ~/.ssh/id_ed25519_git
+```
+
+Add the pub key (id_ed25519_git.pub) to the Deploy keys in settings of your repo
+
+Test by cloning repository
+```bash
+# git clone git@github-repo:saltmonster/test.git
+```
