@@ -28,7 +28,7 @@ via ssh (Key must be in place)
 Generate a unique ssh key for git
 
 ```bash
-# ssh-keygen -y ed25519
+# ssh-keygen -y ed25519 -C "Comment"
 ```
 File name is id_ed25519_git
 
