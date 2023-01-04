@@ -3,9 +3,9 @@
 ### Duo Installation
 
 1. Install Duo software
-    ```bash
-    # yum install duo_unix
-    ```
+        ```bash
+        # yum install duo_unix
+        ```
 2. Update  /etc/duo/login_duo.conf with the following :
     ```bash
     [duo]
