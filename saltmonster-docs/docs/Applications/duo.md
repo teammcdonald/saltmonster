@@ -4,7 +4,7 @@
 
 1. Install Duo software
 
-        # yum install duo_unix
+        # dnf install duo_unix
 
 2. Update  /etc/duo/login_duo.conf with the following :
 
