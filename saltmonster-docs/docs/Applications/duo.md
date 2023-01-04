@@ -34,3 +34,6 @@
         # systemctl restart sshd
 
 5. Test
+
+* Account must created at duo.com
+* {integration key},{secret key} and {api-host} will come from the applications tab on your dashboard 
