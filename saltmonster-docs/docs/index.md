@@ -2,5 +2,5 @@
 
 Primary public saltmonster documentation
 
-Use it wisely
+Use it wisely.
 
