@@ -13,3 +13,6 @@ Print the second to last column
 ```bash
 # awk '{for (i=2; i<NF; i++) printf $i " "; print $NF}' filename
 ```
+```bash
+# awk `{$1=""; print $0}' filename
+```
